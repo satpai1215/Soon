@@ -1,4 +1,9 @@
 Soon::Application.routes.draw do
+  resources :countdown_pages, except: :index
+
+  root to: "countdown_pages#new"
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

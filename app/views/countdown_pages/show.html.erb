@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>End date:</b>
+  <%= @countdown_page.end_date %>
+</p>
+
+<p>
+  <b>Owner:</b>
+  <%= @countdown_page.owner %>
+</p>
+
+
+<%= link_to 'Edit', edit_countdown_page_path(@countdown_page) %> |
+<%= link_to 'Back', countdown_pages_path %>
