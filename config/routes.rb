@@ -1,5 +1,7 @@
 Soon::Application.routes.draw do
-  resources :countdown_pages, except: :index
+  
+  resources :countdown_pages, except: :show
+  get "/:url_token", to: "countdown_pages#show", as: "countdown"
 
   root to: "countdown_pages#new"
 

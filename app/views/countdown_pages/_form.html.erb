@@ -10,16 +10,25 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :end_date %><br />
-    <%= f.datetime_select :end_date %>
-  </div>
-  <div class="field">
-    <%= f.label :owner %><br />
+    <div class="field">
+    <%= f.label :owner, "Your Name:" %><br />
     <%= f.text_field :owner %>
-  </div>
+    </div>
+
+    <div class="field">
+    <h3>When Will You See Each Other?</h3>
+    <%= f.label :datepicker, "Date:" %><%= f.text_field :datepicker %>
+    <%= f.label :timepicker, "Time:" %><%= f.text_field :timepicker %>
+    </div>
+
+    <div class="field">
+    <%= f.label :notes, "Message to Significant Other:" %><br />
+    <%= f.text_area :notes %>
+    </div>
+
+
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Countdown" %>
   </div>
 <% end %>
