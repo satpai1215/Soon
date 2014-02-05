@@ -1,14 +1,19 @@
-<p id="notice"><%= notice %></p>
+<div id = "CountdownPage-show">
 
-<p>
-  <b>End date:</b>
-  <%= @countdown_page.end_date %>
-</p>
+<h1>Countdown for "<%= @countdown_page.name %>"</h1>
 
-<p>
-  <b>Owner:</b>
-  <%= @countdown_page.owner %>
-</p>
+<div id = "countdown-container">
+	<h3>How Soon?</h3>
+	<div id = "countdown-ticker"></div>
+</div>
+
 
 
 <%= link_to 'Edit', edit_countdown_path(@countdown_page) %>
+
+
+</div> <!-- CountdownPage-show -->
+
+<script>
+  createCountdown("<%= @countdown_page.end_date.to_s %>", "#countdown-ticker");
+</script>
