@@ -36,6 +36,7 @@ class CountdownPage < ActiveRecord::Base
 	end
 
 
+
 	private
 
 	#creates unique token to append to url (for restricted access)

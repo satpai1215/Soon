@@ -40,6 +40,6 @@
 
 
   <div class="actions">
-    <%= f.submit "Create Countdown" %>
+    <%= f.submit (@countdown_page.new_record? ? "Create Countdown": "Update Countdown") %>
   </div>
 <% end %>

@@ -1,6 +1,18 @@
-<h1>Editing countdown_page</h1>
+<h1>Editing "<%= @countdown_page.name %>"</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @countdown_page %> |
-<%= link_to 'Back', countdown_pages_path %>
+<%= link_to 'Back', countdown_path(@countdown_page) %>
+
+
+<script>
+	$('#countdown_page_datepicker').datepicker();
+	$('#countdown_page_timepicker').timepicker({
+		'minTime' : '9:00am',
+		'step' : 15,
+		'scrollDefaultTime' : '8:00pm',
+		'timeFormat': 'h:ia',
+		'disableTextInput' : true
+	});
+
+</script>
