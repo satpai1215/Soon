@@ -15,11 +15,15 @@ class CountdownPagesController < ApplicationController
   # GET /countdown_pages/new.json
   def new
     @countdown_page = CountdownPage.new
+    2.times {@countdown_page.persons.build}
   end
 
   # GET /countdown_pages/1/edit
   def edit
     @countdown_page = CountdownPage.find(params[:id])
+
+    @countdown_page.datepicker = @countdown_page.end_date.strftime("%m/%d/%Y")
+    @countdown_page.timepicker = @countdown_page.end_date.strftime("%I:%M%p")
   end
 
   # POST /countdown_pages

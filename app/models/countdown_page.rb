@@ -1,5 +1,5 @@
 class CountdownPage < ActiveRecord::Base
-  	attr_accessible :end_date, :owner, :url_token, :notes, :timepicker, :datepicker, :name
+  	attr_accessible :end_date, :owner, :url_token, :notes, :timepicker, :datepicker, :name, :persons_attributes
   	attr_accessor :timepicker, :datepicker
 
   	has_many :persons, dependent: :destroy
@@ -11,6 +11,8 @@ class CountdownPage < ActiveRecord::Base
 	validates :name, :datepicker, :timepicker, :presence => true
   	validates_format_of :datepicker, with: /^\d{2}[\/-]\d{2}[\/-]\d{4}/
   	validates_format_of :timepicker, with: /^\d{1,2}:\d{2}[ap]m/i
+
+  	before_save :build_end_date_and_validate, :on => [:create, :update]
 
 	def to_param
 		#self.url_token
@@ -43,5 +45,27 @@ class CountdownPage < ActiveRecord::Base
 		#  self.url_token = 
 		self.update_column(:url_token, hashids.encrypt(self.id))
   	end
+
+
+	def build_end_date_and_validate
+		begin
+		  @date = Date.strptime(@datepicker, '%m/%d/%Y')
+		  @time = Time.parse(@timepicker)
+		rescue ArgumentError
+		  errors.add(:end_date, "date is not a valid date or format (must be a valid date with mm/dd/yyyy hh:mm ampm)" )
+		  return false
+		else
+		  #converts to datetime in PDT for easier date subtraction
+		  self.end_date = DateTime.parse("#{@date} #{@time}")
+		  end_date_valid?
+		end
+	end
+
+	def end_date_valid?
+		if self.end_date.past?
+		  errors.add(:end_date, "happens in the past!" )
+		  return false
+		end
+	end
 
 end

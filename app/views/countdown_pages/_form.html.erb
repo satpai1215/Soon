@@ -11,9 +11,20 @@
     </div>
   <% end %>
     <div class="field">
-    <%= f.label :owner, "Your Name:" %><br />
-    <%= f.text_field :owner %>
+      <h3>Name Your Countdown:</h3>
+      <%= f.text_field :name %>
     </div>
+
+    <h3>Enter Information for Lovers (including yourself):</h3>
+    <%= f.fields_for :persons do |p| %>
+      <%= p.label :name, "Name:" %><%= p.text_field :name %>
+      <%= p.label :email, "Email:" %><%= p.text_field :email %>
+      <%= p.label :gender, "Gender:" %>
+        <%= p.radio_button :gender, true %>
+        <%= p.radio_button :gender, false %>
+        <br/>
+
+    <% end %>
 
     <div class="field">
     <h3>When Will You See Each Other?</h3>
@@ -22,7 +33,7 @@
     </div>
 
     <div class="field">
-    <%= f.label :notes, "Message to Significant Other:" %><br />
+    <h3>Message to Significant Other:</h3>
     <%= f.text_area :notes %>
     </div>
 

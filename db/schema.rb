@@ -26,10 +26,10 @@ ActiveRecord::Schema.define(:version => 20140205055934) do
   create_table "people", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.boolean  "gender",             :default => true
-    t.integer  "countdown_pages_id"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
+    t.boolean  "gender",            :default => true
+    t.integer  "countdown_page_id"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
 
 end

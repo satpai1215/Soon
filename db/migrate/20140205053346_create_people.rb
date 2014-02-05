@@ -4,7 +4,7 @@ class CreatePeople < ActiveRecord::Migration
       t.string :name
       t.string :email
       t.boolean :gender, default: true
-      t.references :countdown_pages
+      t.references :countdown_page
 
       t.timestamps
     end
