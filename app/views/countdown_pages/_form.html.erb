@@ -15,9 +15,9 @@
       <%= f.text_field :name %>
     </div>
 
-    <h3>Enter Information for Lovers (including yourself):</h3>
+    <h3>Enter Information for Lovers:</h3>
     <%= f.fields_for :persons do |p| %>
-      <%= p.label :name, "Name:" %><%= p.text_field :name %>
+      <%= p.label :name, (p.object.index === 0 ? "Your Name:" : "Significant Other's Name:") %><%= p.text_field :name %>
       <%= p.label :email, "Email:" %><%= p.text_field :email %>
       <%= p.label :gender, "Gender:" %>
         <%= p.radio_button :gender, true %>

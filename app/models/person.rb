@@ -1,5 +1,6 @@
 class Person < ActiveRecord::Base
   attr_accessible :email, :gender, :name
+  attr_accessor :index
 
   belongs_to :countdown_page
 

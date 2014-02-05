@@ -15,7 +15,7 @@ class CountdownPagesController < ApplicationController
   # GET /countdown_pages/new.json
   def new
     @countdown_page = CountdownPage.new
-    2.times {@countdown_page.persons.build}
+    2.times {|n| @countdown_page.persons.build.index = n}
   end
 
   # GET /countdown_pages/1/edit
