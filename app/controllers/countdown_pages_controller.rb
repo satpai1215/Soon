@@ -5,6 +5,7 @@ class CountdownPagesController < ApplicationController
   # GET /countdown_pages/1.json
   def show
     @countdown_page = CountdownPage.decrypt(params[:url_token])
+    @is_finished = @countdown_page.end_date.past?
 
     respond_to do |format|
       format.html # show.html.erb
