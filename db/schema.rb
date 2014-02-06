@@ -11,25 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140205055934) do
+ActiveRecord::Schema.define(:version => 20140206014052) do
 
   create_table "countdown_pages", :force => true do |t|
     t.datetime "end_date"
     t.string   "owner"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "url_token"
     t.text     "notes"
     t.string   "name"
+    t.integer  "finish_job_id"
   end
 
-  create_table "people", :force => true do |t|
+  create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.boolean  "gender",            :default => true
     t.integer  "countdown_page_id"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.boolean  "is_male",           :default => false
   end
 
 end

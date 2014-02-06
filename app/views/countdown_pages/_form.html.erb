@@ -15,15 +15,16 @@
       <%= f.text_field :name %>
     </div>
 
-    <h3>Enter Information for Lovers:</h3>
-    <%= f.fields_for :persons do |p| %>
-      <%= p.label :name, (p.object.index === 0 ? "Your Name:" : "Significant Other's Name:") %><%= p.text_field :name %>
-      <%= p.label :email, "Email:" %><%= p.text_field :email %>
-      <%= p.label :gender, "Gender:" %>
-        <%= p.radio_button :gender, true %>
-        <%= p.radio_button :gender, false %>
-        <br/>
-
+    <% if @countdown_page.new_record? %>
+      <h3>Enter Information for Lovers:</h3>
+      <%= f.fields_for :users do |p| %>
+        <%= p.label :name, (p.object.index === 0 ? "Your Name:" : "Significant Other's Name:") %><%= p.text_field :name %>
+        <%= p.label :email, "Email:" %><%= p.text_field :email %>
+        <%= p.label :is_male, "Gender:" %>
+          <%= p.radio_button :is_male, true %>
+          <%= p.radio_button :is_male, false %>
+          <br/>
+      <% end %>
     <% end %>
 
     <div class="field">

@@ -15,7 +15,7 @@ class CountdownPagesController < ApplicationController
   # GET /countdown_pages/new.json
   def new
     @countdown_page = CountdownPage.new
-    2.times {|n| @countdown_page.persons.build.index = n}
+    2.times {|n| @countdown_page.users.build.index = n}
   end
 
   # GET /countdown_pages/1/edit
@@ -36,7 +36,8 @@ class CountdownPagesController < ApplicationController
 
     respond_to do |format|
       if @countdown_page.save
-        format.html { redirect_to countdown_path(@countdown_page), notice: 'Countdown page was successfully created.' }
+        write_jobs(@countdown_page.id)
+        format.html { redirect_to countdown_path(@countdown_page), notice: 'Countdown was successfully created.' }
       else
         format.html { render action: "new", notice: "Countdown could not be created." }
       end
@@ -51,6 +52,7 @@ class CountdownPagesController < ApplicationController
 
     respond_to do |format|
       if @countdown_page.update_attributes(params[:countdown_page])
+        write_jobs(@countdown_page.id)
         format.html { redirect_to countdown_path(@countdown_page), notice: 'Countdown was successfully updated.' }
       else
         format.html { render action: "edit" }
@@ -62,10 +64,38 @@ class CountdownPagesController < ApplicationController
   # DELETE /countdown_pages/1.json
   def destroy
     @countdown_page = CountdownPage.find(params[:id])
+    destroy_jobs(@countdown_page.id)
     @countdown_page.destroy
 
     respond_to do |format|
       format.html { redirect_to countdown_pages_url }
     end
   end
+
+
+  private
+
+  def write_jobs(page_id)
+    @page = CountdownPage.find(page_id)
+
+    #delete delayed_jobs if it exists
+    destroy_jobs(page_id)
+
+    #rewrite delayed_jobs for updated page
+    page_job = Delayed::Job.enqueue(CountdownOverJob.new(@page.id), 0, @page.end_date)
+
+    # save id of delayed job on CountdownPage record
+    @page.update_column(:finished_job_id, page_job.id)
+
+  end
+
+  def destroy_jobs(page_id)
+    @page = CountdownPage.find(page_id)
+
+    #if record has :finished_job_id and the DJ record exists, destroy it
+    if @page.finished_job_id and Delayed::Job.exists?(@page.finished_job_id)
+      Delayed::Job.find(@page.finished_job_id).destroy
+    end
+  end
+
 end
