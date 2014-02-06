@@ -1,6 +1,6 @@
 Soon::Application.routes.draw do
   
-  resources :countdown_pages, except: [:index, :show, :edit]
+  resources :countdown_pages, except: [:index, :show, :edit], path: '/'
   get "/:url_token", to: "countdown_pages#show", as: "countdown"
   get "/:url_token/edit", to: "countdown_pages#edit", as: "edit_countdown"
 
