@@ -82,19 +82,19 @@ class CountdownPagesController < ApplicationController
     destroy_jobs(page_id)
 
     #rewrite delayed_jobs for updated page
-    page_job = Delayed::Job.enqueue(CountdownOverJob.new(@page.id), 0, @page.end_date)
+    page_job = Delayed::Job.enqueue(CountdownOverJob.new(page_id), 0, @page.end_date)
 
     # save id of delayed job on CountdownPage record
-    @page.update_column(:finished_job_id, page_job.id)
+    @page.update_column(:finish_job_id, page_job.id)
 
   end
 
   def destroy_jobs(page_id)
     @page = CountdownPage.find(page_id)
 
-    #if record has :finished_job_id and the DJ record exists, destroy it
-    if @page.finished_job_id and Delayed::Job.exists?(@page.finished_job_id)
-      Delayed::Job.find(@page.finished_job_id).destroy
+    #if record has :finish_job_id and the DJ record exists, destroy it
+    if @page.finish_job_id and Delayed::Job.exists?(@page.finish_job_id)
+      Delayed::Job.find(@page.finish_job_id).destroy
     end
   end
 

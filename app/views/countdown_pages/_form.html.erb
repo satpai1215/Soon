@@ -20,9 +20,9 @@
       <%= f.fields_for :users do |p| %>
         <%= p.label :name, (p.object.index === 0 ? "Your Name:" : "Significant Other's Name:") %><%= p.text_field :name %>
         <%= p.label :email, "Email:" %><%= p.text_field :email %>
-        <%= p.label :is_male, "Gender:" %>
-          <%= p.radio_button :is_male, true %>
+        <%= p.label :is_male, "Female/Male?" %>
           <%= p.radio_button :is_male, false %>
+          <%= p.radio_button :is_male, true %>
           <br/>
       <% end %>
     <% end %>
