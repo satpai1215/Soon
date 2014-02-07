@@ -16,8 +16,7 @@ class CountdownPage < ActiveRecord::Base
   	before_save :build_end_date_and_validate, :on => [:create, :update]
 
 	def to_param
-		#self.url_token
-		CountdownPage.encrypt(self.id)
+		self.url_token || CountdownPage.encrypt(self.id)
 	end
 
 	def self.decrypt(token)
