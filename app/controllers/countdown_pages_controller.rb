@@ -1,8 +1,7 @@
 class CountdownPagesController < ApplicationController
 
 
-  # GET /countdown_pages/1
-  # GET /countdown_pages/1.json
+  # GET /:url_token
   def show
     @countdown_page = CountdownPage.decrypt(params[:url_token])
     @is_finished = @countdown_page.end_date.past?
@@ -12,26 +11,13 @@ class CountdownPagesController < ApplicationController
     end
   end
 
-  # GET /countdown_pages/new
-  # GET /countdown_pages/new.json
+  # GET /new
   def new
     @countdown_page = CountdownPage.new
     2.times {|n| @countdown_page.users.build.index = n}
   end
 
-  # GET /countdown_pages/1/edit
-  def edit
-    @countdown_page = CountdownPage.decrypt(params[:url_token])
-    if @countdown_page
-      @countdown_page.datepicker = @countdown_page.end_date.strftime("%m/%d/%Y")
-      @countdown_page.timepicker = @countdown_page.end_date.strftime("%I:%M%p")
-    else
-      redirect_to root_path, notice: "event could not be found"
-    end
-  end
-
-  # POST /countdown_pages
-  # POST /countdown_pages.json
+  # POST /
   def create
     @countdown_page = CountdownPage.new(params[:countdown_page])
 
@@ -45,8 +31,18 @@ class CountdownPagesController < ApplicationController
     end
   end
 
-  # PUT /countdown_pages/1
-  # PUT /countdown_pages/1.json
+  # GET /:url_token/edit
+  def edit
+    @countdown_page = CountdownPage.decrypt(params[:url_token])
+    if @countdown_page
+      @countdown_page.datepicker = @countdown_page.end_date.strftime("%m/%d/%Y")
+      @countdown_page.timepicker = @countdown_page.end_date.strftime("%I:%M%p")
+    else
+      redirect_to root_path, notice: "event could not be found"
+    end
+  end
+
+  # PUT /:id
   def update
     #_form submit routes to /countdown_pages/:id, with the :id being the url_token
     @countdown_page = CountdownPage.decrypt(params[:id])
@@ -61,10 +57,9 @@ class CountdownPagesController < ApplicationController
     end
   end
 
-  # DELETE /countdown_pages/1
-  # DELETE /countdown_pages/1.json
+  # DELETE /:id
   def destroy
-    @countdown_page = CountdownPage.find(params[:id])
+    @countdown_page = CountdownPage.decrypt(params[:id])
     destroy_jobs(@countdown_page.id)
     @countdown_page.destroy
 
