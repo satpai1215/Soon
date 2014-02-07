@@ -14,6 +14,8 @@ class CountdownPagesController < ApplicationController
   # GET /new
   def new
     @countdown_page = CountdownPage.new
+    @url = countdown_pages_path
+    @method = :post
     2.times {|n| @countdown_page.users.build.index = n}
   end
 
@@ -34,6 +36,8 @@ class CountdownPagesController < ApplicationController
   # GET /:url_token/edit
   def edit
     @countdown_page = CountdownPage.decrypt(params[:url_token])
+    @url = countdown_page_path
+    @method = :put
     if @countdown_page
       @countdown_page.datepicker = @countdown_page.end_date.strftime("%m/%d/%Y")
       @countdown_page.timepicker = @countdown_page.end_date.strftime("%I:%M%p")
@@ -45,7 +49,7 @@ class CountdownPagesController < ApplicationController
   # PUT /:id
   def update
     #_form submit routes to /countdown_pages/:id, with the :id being the url_token
-    @countdown_page = CountdownPage.decrypt(params[:id])
+    @countdown_page = CountdownPage.decrypt(params[:url_token])
 
     respond_to do |format|
       if @countdown_page.update_attributes(params[:countdown_page])

@@ -1,4 +1,4 @@
-<%= form_for(@countdown_page) do |f| %>
+<%= form_for(@countdown_page, url: @url, method: @method)  do |f| %>
   <% if @countdown_page.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@countdown_page.errors.count, "error") %> prohibited this countdown_page from being saved:</h2>

@@ -1,6 +1,10 @@
 Soon::Application.routes.draw do
   
-  resources :countdown_pages, except: [:index, :show, :edit], path: '/'
+  #resources :countdown_pages, except: [:index, :show, :edit], path: '/'
+  post "/", to: "countdown_pages#create", as: "countdown_pages"
+  get "/new", to: "countdown_pages#new", as: "new_countdown_page"
+  put "/:url_token", to: "countdown_pages#update", as: "countdown_page"
+  delete "/:url_token", to: "countdown_pages#destroy", as: "countdown_page"
   get "/:url_token", to: "countdown_pages#show", as: "countdown"
   get "/:url_token/edit", to: "countdown_pages#edit", as: "edit_countdown"
 
