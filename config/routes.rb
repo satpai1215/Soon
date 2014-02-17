@@ -9,7 +9,7 @@ Soon::Application.routes.draw do
   get "/:url_token/edit", to: "countdown_pages#edit", as: "edit_countdown"
 
 
-  root to: "countdown_pages#new"
+  root to: "countdown_pages#home"
 
 
   # The priority is based upon order of creation:

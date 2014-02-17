@@ -10,33 +10,22 @@
       </ul>
     </div>
   <% end %>
-    <div class="field">
-      <h3>Name Your Countdown:</h3>
-      <%= f.text_field :name %>
-    </div>
+
+  <div class="field">
+    <%= f.label :datepicker, "Date:" %><%= f.text_field :datepicker %>
+    <%= f.label :timepicker, "Time:" %><%= f.text_field :timepicker %>
+  </div>
 
     <% if @countdown_page.new_record? %>
-      <h3>Enter Information for Lovers:</h3>
       <%= f.fields_for :users do |p| %>
         <%= p.label :name, (p.object.index === 0 ? "Your Name:" : "Significant Other's Name:") %><%= p.text_field :name %>
-        <%= p.label :email, "Email:" %><%= p.text_field :email %>
+        <%= p.label :email, (p.object.index === 0 ? "Your Email:" : "Their Email:") %><%= p.text_field :email %>
         <%= p.label :is_male, "Female/Male?" %>
           <%= p.radio_button :is_male, false %>
           <%= p.radio_button :is_male, true %>
           <br/>
       <% end %>
     <% end %>
-
-    <div class="field">
-    <h3>When Will You See Each Other?</h3>
-    <%= f.label :datepicker, "Date:" %><%= f.text_field :datepicker %>
-    <%= f.label :timepicker, "Time:" %><%= f.text_field :timepicker %>
-    </div>
-
-    <div class="field">
-    <h3>Message to Significant Other:</h3>
-    <%= f.text_area :notes %>
-    </div>
 
 
 

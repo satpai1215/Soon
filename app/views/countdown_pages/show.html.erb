@@ -1,6 +1,4 @@
-<div id = "CountdownPage-show">
-
-<h1>Countdown for "<%= @countdown_page.name %>"</h1>
+<div id = "countdown-show">
 
 <% if @is_finished %>
 	<div id = "finished-countdown-container">
@@ -9,7 +7,7 @@
 	
 <% else %>
 	<div id = "countdown-container">
-		<h3>How Soon?</h3>
+		<h3>When Will I See You?</h3>
 		<div id = "countdown-ticker"></div>
 	</div>
 <% end %>

@@ -1,5 +1,7 @@
 class CountdownPagesController < ApplicationController
 
+  def home
+  end
 
   # GET /:url_token
   def show

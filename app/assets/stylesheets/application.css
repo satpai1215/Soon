@@ -8,7 +8,40 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require jquery.timepicker.css
  *= require_tree .
+  *= require_self
  */
+
+@font-face {
+  font-family: 'crap';
+  src: url('Valentina-Regular.otf') format('opentype');
+  font-style: normal;
+}
+body {
+ 	height: 100%;
+ 	background-color: #1B75BB;
+ 	color: #FCF39A;
+ 	font-family: crap;
+ 	font-size: 2em;
+ 	line-height: 1.5em;
+ }
+
+ #container {
+ 	width: 960px;
+ 	margin: 0 auto;
+ }
+
+#new_countdown_link {
+	color: #FCF39A;
+	margin-top: 300px;
+ 	font-size: 3em;
+ 	text-align: center;
+ 	font-weight: normal;
+ 	opacity: 0.8;
+ 	text-decoration: none;
+ }
+ 	#new_countdown_link:hover {
+ 		opacity: 1;
+ 		background-color: #1B75BB;
+	 }

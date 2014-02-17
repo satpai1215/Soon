@@ -9,7 +9,7 @@ class CountdownPage < ActiveRecord::Base
 	validates_uniqueness_of :url_token
 	validates_uniqueness_of :finish_job_id
 
-	validates :name, :datepicker, :timepicker, :presence => true
+	validates :datepicker, :timepicker, :presence => true
   	validates_format_of :datepicker, with: /^\d{2}[\/-]\d{2}[\/-]\d{4}/
   	validates_format_of :timepicker, with: /^\d{1,2}:\d{2}[ap]m/i
 

@@ -1,8 +1,11 @@
-<h1>Editing "<%= @countdown_page.name %>"</h1>
 
-<%= render 'form' %>
+<div id ="new-countdown-form">
+	<h2>When Will I See You?</h2>
+	<%= render 'form' %>
+	<%= link_to 'Back', countdown_path(@countdown_page) %>
+</div>
 
-<%= link_to 'Back', countdown_path(@countdown_page) %>
+
 
 
 <script>
