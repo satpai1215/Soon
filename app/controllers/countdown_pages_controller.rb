@@ -4,10 +4,14 @@ class CountdownPagesController < ApplicationController
   # GET /:url_token
   def show
     @countdown_page = CountdownPage.decrypt(params[:url_token])
-    @is_finished = @countdown_page.end_date.past?
-
-    respond_to do |format|
-      format.html # show.html.erb
+    
+    if @countdown_page.nil?
+      redirect_to root_path, notice: "The countdown you requested could not be found."
+    else
+      @is_finished = @countdown_page.end_date.past?
+      respond_to do |format|
+        format.html # show.html.erb
+      end
     end
   end
 
@@ -26,6 +30,9 @@ class CountdownPagesController < ApplicationController
     respond_to do |format|
       if @countdown_page.save
         write_jobs(@countdown_page.id)
+
+        AutoMailer.countdown_created_email(@countdown_page.id).deliver
+
         format.html { redirect_to countdown_path(@countdown_page), notice: 'Countdown was successfully created.' }
       else
         format.html { render action: "new", notice: "Countdown could not be created." }
