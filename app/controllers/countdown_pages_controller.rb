@@ -37,6 +37,8 @@ class CountdownPagesController < ApplicationController
 
         format.html { redirect_to countdown_path(@countdown_page), notice: 'Countdown was successfully created.' }
       else
+        @url = countdowns_path
+        @method = :post
         format.html { render action: "new", notice: "Countdown could not be created." }
       end
     end
@@ -46,7 +48,7 @@ class CountdownPagesController < ApplicationController
   def edit
     @countdown_page = CountdownPage.decrypt(params[:url_token])
     @url = countdown_path(@countdown_page)
-    #@method = :patch
+    @method = :patch
     if @countdown_page
       @countdown_page.datepicker = @countdown_page.end_date.strftime("%m/%d/%Y")
       @countdown_page.timepicker = @countdown_page.end_date.strftime("%I:%M%p")
@@ -65,6 +67,8 @@ class CountdownPagesController < ApplicationController
         write_jobs(@countdown_page.id)
         format.html { redirect_to countdown_path(@countdown_page), notice: 'Countdown was successfully updated.' }
       else
+        @url = countdown_path(@countdown_page)
+        @method = :patch
         format.html { render action: "edit" }
       end
     end
