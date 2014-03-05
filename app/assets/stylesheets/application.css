@@ -21,10 +21,12 @@
 body {
  	height: 100%;
  	background-color: #1B75BB;
+ 	background-color: #2C75BC;
  	color: #FCF39A;
  	font-family: Valentina-Regular;
  	font-size: 2em;
  	line-height: 1.5em;
+
  }
 
  #container {
@@ -34,7 +36,6 @@ body {
 
 #new_countdown_link {
 	color: #FCF39A;
-	margin-top: 300px;
  	font-size: 3em;
  	text-align: center;
  	font-weight: normal;
