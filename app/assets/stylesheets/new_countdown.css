@@ -1,0 +1,98 @@
+#new-countdown-form {
+	width: 80%;
+	margin: 0 auto;
+	font-family: Valentina-Regular;
+	padding: 30px;
+}
+	#new-countdown-form h2 {
+		text-align: center;
+		margin-top: 10px;
+	}
+.text_input input {
+	border: none;
+	border-bottom: 2px solid #FCF39A;
+	background-color: #1B75BB;
+	color: #FCF39A;
+	font-size: 1em;
+}
+	.text_input input:focus {
+		outline: none;
+	}
+
+#date_entry {
+	text-align: center;
+	margin-bottom: 60px;
+}
+
+#date_input, #time_input {
+	display: inline;
+}
+#date_input {
+	margin-right: 10px;
+}
+	#countdown_page_datepicker, #countdown_page_timepicker {
+		text-align: center;
+		width: 30%;
+		font-size: 1em;
+	}
+
+.form_user_info {
+	margin-bottom: 80px;
+
+}
+
+
+.form_entry {
+}
+
+	.form_entry label {
+		font-size: 0.9em;
+	}
+
+	.form_entry input {
+		display: block;
+		width: 40%;
+		font-size: 1em;
+		color: #FCF39A;
+	}
+
+.gender_select {
+	float: right;
+	margin: 10px;
+}
+	.gender_select_header {
+		text-align: center;
+		font-size: 0.6em;
+		line-height: 1em;
+	}
+.gender_select_icon_selectbox {
+	display: inline-block;
+
+}
+	.icon_img {
+		width: 60%;
+		height: auto;
+		display: block;
+		margin: 0 auto;
+	}
+
+	.gender_select input {
+		display: block;
+		margin: 0 auto;
+	}
+
+.actions {
+	text-align: center;
+}
+	.actions input {
+		 opacity: 0.8;
+		cursor: pointer;
+		color: #FCF39A;
+		font-family: Valentina-Regular;
+		font-size: 1.2em;
+		background: none;
+		border: none;
+	}
+	.actions input:hover {
+		opacity: 1;
+	}

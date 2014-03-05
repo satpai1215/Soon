@@ -1,0 +1,13 @@
+#edit_container {
+	margin: 30px auto;
+}
+
+
+#edit_container #edit_header {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+#edit_container #date_entry {
+	margin-bottom: 30px;
+}

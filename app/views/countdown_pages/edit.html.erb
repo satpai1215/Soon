@@ -1,8 +1,12 @@
 
 <div id ="new-countdown-form">
 	<h2>When Will I See You?</h2>
-	<%= render 'form' %>
-	<%= link_to 'Back', countdown_path(@countdown_page) %>
+	<div id = "edit_container">
+		<div id = "edit_header">Edit Countdown</div>
+		<%= render 'form' %>
+	</div>
+	
+	<%= link_to 'go back', countdown_path(@countdown_page), class: "back_link" %>
 </div>
 
 

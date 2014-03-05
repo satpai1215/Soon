@@ -46,7 +46,7 @@ class CountdownPagesController < ApplicationController
   def edit
     @countdown_page = CountdownPage.decrypt(params[:url_token])
     @url = countdown_path(@countdown_page)
-    @method = :put
+    #@method = :patch
     if @countdown_page
       @countdown_page.datepicker = @countdown_page.end_date.strftime("%m/%d/%Y")
       @countdown_page.timepicker = @countdown_page.end_date.strftime("%I:%M%p")

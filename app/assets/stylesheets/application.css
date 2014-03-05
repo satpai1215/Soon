@@ -10,11 +10,11 @@
  *
  *= require jquery.timepicker.css
  *= require_tree .
-  *= require_self
+ *= require_self
  */
 
 @font-face {
-  font-family: 'crap';
+  font-family: 'Valentina-Regular';
   src: url('Valentina-Regular.otf') format('opentype');
   font-style: normal;
 }
@@ -22,7 +22,7 @@ body {
  	height: 100%;
  	background-color: #1B75BB;
  	color: #FCF39A;
- 	font-family: crap;
+ 	font-family: Valentina-Regular;
  	font-size: 2em;
  	line-height: 1.5em;
  }
@@ -43,5 +43,20 @@ body {
  }
  	#new_countdown_link:hover {
  		opacity: 1;
- 		background-color: #1B75BB;
+ 		background: none;
 	 }
+
+
+.action_link {
+	margin-top: 40px;
+	display: block;
+	font-size: 0.6em;
+	text-decoration: none;
+	text-align: center;
+	color: #FCF39A;
+	font-family: Valentina-Regular;
+	opacity: 0.8;
+}
+	.action_link:hover {
+		opacity: 1;
+	}

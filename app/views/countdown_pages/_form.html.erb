@@ -11,25 +11,44 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :datepicker, "Date:" %><%= f.text_field :datepicker %>
-    <%= f.label :timepicker, "Time:" %><%= f.text_field :timepicker %>
+  <div id="date_entry">
+    <%= f.label :datepicker, "Date:" %>
+    <div class = "text_input" id = "date_input"><%= f.text_field :datepicker %></div>
+    <%= f.label :timepicker, "Time:" %>
+    <div class = "text_input" id = "time_input"><%= f.text_field :timepicker %></div>
   </div>
 
     <% if @countdown_page.new_record? %>
       <%= f.fields_for :users do |p| %>
-        <%= p.label :name, (p.object.index === 0 ? "Your Name:" : "Significant Other's Name:") %><%= p.text_field :name %>
-        <%= p.label :email, (p.object.index === 0 ? "Your Email:" : "Their Email:") %><%= p.text_field :email %>
-        <%= p.label :is_male, "Female/Male?" %>
-          <%= p.radio_button :is_male, false %>
-          <%= p.radio_button :is_male, true %>
-          <br/>
+        <div class = "form_user_info">
+          <div class = "gender_select">   
+            <div class = "gender_select_header"><%=  p.object.index === 0 ? "Choose You:" : "Choose Them:" %></div>
+            <div class = "gender_select_icon_selectbox">
+              <%#= p.label :is_male, "Male" %>
+              <%= image_tag "soondude.png",  class: "icon_img" %>
+              <%= p.radio_button :is_male, true %>
+            </div>
+            <div class = "gender_select_icon_selectbox">
+              <%#= p.label :is_male, "Female" %>
+              <%= image_tag "soondudette.png", class: "icon_img" %>
+              <%= p.radio_button :is_male, false %>
+            </div>
+          </div>
+          <div class = "form_entry">
+            <div class = "text_input"><%= p.text_field :name, autocomplete: "off" %></div>
+            <%= p.label :name, (p.object.index === 0 ? "Your Name:" : "Their Name:") %>
+          </div>
+          <div class = "form_entry">
+           <div class = "text_input"><%= p.text_field :email, autocomplete: "off" %></div>
+            <%= p.label :email, (p.object.index === 0 ? "Your Email:" : "Their Email:") %>
+          </div>
+        </div>
       <% end %>
     <% end %>
 
 
 
   <div class="actions">
-    <%= f.submit (@countdown_page.new_record? ? "Create Countdown": "Update Countdown") %>
+    <%= f.submit (@countdown_page.new_record? ? "GO!": "UPDATE!") %>
   </div>
 <% end %>
