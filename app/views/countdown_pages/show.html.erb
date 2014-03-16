@@ -8,13 +8,16 @@
 <% else %>
 	<div id = "countdown-container">
 		<h3>When Will I See You?</h3>
-		<div id = "countdown-ticker"></div>
+		<%= link_to 'Edit Countdown', edit_countdown_path(@countdown_page), class: "action_link" %>
+	</div>
+
+	<div id = "timeline-container">
+	 	<%= image_tag (@user1.is_male ? "soondude.png": "soondudette.png"), class: "countdown-show-icon" %>
+		<div id = "logo-spacer"><div id = "countdown-ticker">Countdown Loading...</div></div>
+	 	<%= image_tag (@user2.is_male ? "soondude.png": "soondudette.png"), class: "countdown-show-icon reverse"  %>
 	</div>
 <% end %>
 
-
-
-<%= link_to 'Edit', edit_countdown_path(@countdown_page), class: "action_link" %>
 
 
 </div> <!-- CountdownPage-show -->

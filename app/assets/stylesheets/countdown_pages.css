@@ -2,3 +2,32 @@
 #countdown-show{
 	text-align: center;
 }
+
+#countdown-container h3 {
+	margin-bottom: 0px;
+}
+
+#countdown-container a {
+	font-size: 0.5em;
+}
+
+.countdown-show-icon {
+	width: 20%;
+}
+
+#logo-spacer {
+	display: inline-block;
+	border-bottom: 2px dashed #FCF39A;
+	width: 55%;
+	margin-top: 60px;
+	vertical-align: top;
+}
+
+.reverse {
+	 -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}

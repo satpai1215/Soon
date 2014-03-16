@@ -6,6 +6,8 @@ class CountdownPagesController < ApplicationController
   # GET /:url_token
   def show
     @countdown_page = CountdownPage.decrypt(params[:url_token])
+    @user1 = @countdown_page.users.first
+    @user2 = @countdown_page.users.last
     
     if @countdown_page.nil?
       redirect_to root_path, notice: "The countdown you requested could not be found."
