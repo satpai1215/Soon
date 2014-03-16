@@ -1,6 +1,9 @@
 
 #countdown-show{
 	text-align: center;
+	padding: 40px 0;
+	border: 2px solid #FCF39A;
+	border-radius: 20px;
 }
 
 #countdown-container h3 {
