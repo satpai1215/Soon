@@ -9,19 +9,30 @@ Soon::Application.configure do
   config.action_controller.perform_caching = true
 
 
-  # Mailer options
+    # Mailer options
   config.action_mailer.default_url_options = { :host => 'sooon.herokuapp.com' }
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  # :address              => "smtpout.secureserver.net",
+  # :port                 => 80,
+  # :domain               => 'mo-mondays.com',
+  # :user_name            => 'info@mo-mondays.com',
+  # :password             => 'moproblems',
+  # :authentication       => 'plain',
+  # :enable_starttls_auto => true  }
+
   config.action_mailer.smtp_settings = {
-  :address              => "smtp.gmail.com",
-  :port                 => 587,
-  #:domain               => 'baci.lindsaar.net',
-  :user_name            => 'MoMondaysMailer@gmail.com',
-  :password             => 'moproblems',
-  :authentication       => 'plain',
-  :enable_starttls_auto => true  }
+    :address              => "smtp.mandrillapp.com",
+    :port                 => 587,
+    #:domain               => 'baci.lindsaar.net',
+    :user_name            => ENV['MANDRILL_USERNAME'],
+    :password             => ENV['MANDRILL_PW'],
+    :authentication       => 'plain',
+    :enable_starttls_auto => true,  
+    :domain => 'sooon.com'
+  }
 
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
