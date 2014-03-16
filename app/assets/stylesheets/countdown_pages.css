@@ -7,10 +7,6 @@
 	margin-bottom: 0px;
 }
 
-#countdown-container a {
-	font-size: 0.5em;
-}
-
 .countdown-show-icon {
 	width: 20%;
 }
@@ -21,6 +17,10 @@
 	width: 55%;
 	margin-top: 60px;
 	vertical-align: top;
+}
+
+#show-options {
+	font-size: 0.9em;
 }
 
 .reverse {
