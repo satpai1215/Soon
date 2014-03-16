@@ -1,26 +1,28 @@
 <div id = "countdown-show">
 
-<% if @is_finished %>
-	<div id = "finished-countdown-container">
-		<h3>YOU MADE IT!</h3>
-	</div>
-	
-<% else %>
+
 	<div id = "countdown-container">
-		<h3>When Will I See You?</h3>
-	</div>
+		<h3><%= @is_finished ? "You Made It!": "When Will I See You?" %></h3>
 
 	<div id = "timeline-container">
 	 	<%= image_tag (@user1.is_male ? "soondude.png": "soondudette.png"), class: "countdown-show-icon" %>
-		<div id = "logo-spacer"><div id = "countdown-ticker">Countdown Loading...</div></div>
+	 	<% if !@is_finished %>
+			<div id = "logo-spacer">
+				<div id = "countdown-ticker">Countdown Loading...</div>
+			</div>
+		<% end %>
 	 	<%= image_tag (@user2.is_male ? "soondude.png": "soondudette.png"), class: "countdown-show-icon reverse"  %>
 	</div>
 
-	<div id = "show-options">
-		<%= link_to 'Edit Countdown', edit_countdown_path(@countdown_page), class: "action_link" %>
-		<%= link_to 'Permalink (for bookmarking)', countdown_path(@countdown_page), class: "action_link" %>
-	</div>
-<% end %>
+	<%if @is_finished %>
+		<div id = "finished-show-date"><%= @countdown_page.end_date.strftime('on %B %-d, %Y at %l:%M%P') %></div>
+	<% else %>
+		<div id = "show-options">
+			<%= link_to 'Edit Countdown', edit_countdown_path(@countdown_page), class: "action_link" %>
+			<%= link_to 'Permalink (for bookmarking)', countdown_path(@countdown_page), class: "action_link" %>
+		</div>
+	<% end %>
+</div>
 
 
 
@@ -28,7 +30,9 @@
 
 <%= javascript_tag do %>
 	$(function() {
-		<% if !@is_finished %>
+		<% if @is_finished %>
+			$('.reverse').css('margin-left', '-90px');
+		<% else %>
   			createCountdown("<%= @countdown_page.end_date.to_s %>", "#countdown-ticker");
   		<% end %>	
 
