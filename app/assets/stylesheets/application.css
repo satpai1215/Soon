@@ -33,12 +33,12 @@ body {
 }
  #container {
  	width: 960px;
+ 	min-height: 100%;
  	margin: 0 auto;
  }
 
 #new_countdown_link {
 	color: #FCF39A;
- 	font-size: 3em;
  	text-align: center;
  	font-weight: normal;
  	opacity: 0.8;
@@ -62,3 +62,26 @@ body {
 	.action_link:hover {
 		opacity: 1;
 	}
+
+
+
+footer {
+	font-size: 0.8em;
+	text-align: center;
+	padding: 50px 0px;
+}
+#footer-link {
+	color: #FCF39A;
+ 	text-align: center;
+ 	font-weight: normal;
+ 	opacity: 0.8;
+ 	text-decoration: none;
+ 	height: 10%;
+ }
+ 	#footer-link:hover {
+ 		opacity: 1;
+ 		background: none;
+	 }
+	 #footer-link img {
+	 	width: 15%;
+	 }

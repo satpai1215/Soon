@@ -5,13 +5,19 @@
 		<h3><%= @is_finished ? "You Made It!": "When Will I See You?" %></h3>
 
 	<div id = "timeline-container">
-	 	<%= image_tag (@user1.is_male ? "soondude.png": "soondudette.png"), class: "countdown-show-icon" %>
+	 	<div class = "person-icon">
+	 		<%= image_tag (@user1.is_male ? "soondude.png": "soondudette.png"), class: "countdown-show-icon normal" %>
+	 		<div class = "person-name"><%= @user1.name %></div>
+	 	</div>
 	 	<% if !@is_finished %>
 			<div id = "logo-spacer">
 				<div id = "countdown-ticker">Countdown Loading...</div>
 			</div>
 		<% end %>
-	 	<%= image_tag (@user2.is_male ? "soondude.png": "soondudette.png"), class: "countdown-show-icon reverse"  %>
+		<div class = "person-icon">
+	 		<%= image_tag (@user2.is_male ? "soondude.png": "soondudette.png"), class: "countdown-show-icon reverse"  %>
+	 		<div class = "person-name"><%= @user2.name %></div>
+	 	</div>
 	</div>
 
 	<%if @is_finished %>
@@ -27,11 +33,14 @@
 
 
 </div> <!-- CountdownPage-show -->
+<footer><%= link_to image_tag('soonlogo.png'), root_path, {id: "footer-link"} %></footer>
 
 <%= javascript_tag do %>
 	$(function() {
 		<% if @is_finished %>
-			$('.reverse').css('margin-left', '-90px');
+			$('.normal').css('margin-right', '-50px');
+			$('.reverse').css('margin-left', '-50px');
+			$('.person-name').html('');
 		<% else %>
   			createCountdown("<%= @countdown_page.end_date.to_s %>", "#countdown-ticker");
   		<% end %>	

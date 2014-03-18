@@ -51,7 +51,7 @@ class CountdownPage < ActiveRecord::Base
 	def build_end_date_and_validate
 		begin
 		  @date = Date.strptime(@datepicker, '%m/%d/%Y')
-		  @time = Time.parse(@timepicker)
+		  @time = Time.zone.parse(@timepicker)
 		rescue ArgumentError
 		  errors.add(:end_date, "date is not a valid date or format (must be a valid date with mm/dd/yyyy hh:mm ampm)" )
 		  return false
