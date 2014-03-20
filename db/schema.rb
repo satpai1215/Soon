@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140206021224) do
+ActiveRecord::Schema.define(:version => 20140320045116) do
 
   create_table "countdown_pages", :force => true do |t|
     t.datetime "end_date"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20140206021224) do
     t.text     "notes"
     t.string   "name"
     t.integer  "finish_job_id"
+    t.string   "timezone"
   end
 
   create_table "delayed_jobs", :force => true do |t|

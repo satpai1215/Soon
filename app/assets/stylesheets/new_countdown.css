@@ -21,7 +21,7 @@
 	}
 
 #date_entry {
-	text-align: center;
+	text-align: left;
 	margin-bottom: 60px;
 }
 	#date_entry label {
@@ -39,6 +39,21 @@
 		text-align: center;
 		width: 30%;
 		font-size: 1em;
+	}
+
+#countdown_page_timezone {
+	-moz-appearance: none;
+	-webkit-appearance:none; 
+	font-family: Valentina Regular; 
+	color: #FCF39A;
+	font-size: 0.8em;
+	background-color: #2C75BC;
+	border: none;
+	cursor: pointer;
+
+}
+	#countdown_page_timezone:hover {
+		text-decoration: underline;
 	}
 
 .form_user_info {

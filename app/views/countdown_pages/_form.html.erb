@@ -16,6 +16,7 @@
     <div class = "text_input" id = "date_input"><%= f.text_field :datepicker %></div>
     <%= f.label :timepicker, "Time:" %>
     <div class = "text_input" id = "time_input"><%= f.text_field :timepicker %></div>
+   <%= f.select :timezone,  [["PST"], ["CST"], ["EST"]] %>
   </div>
 
     <% if @countdown_page.new_record? %>
