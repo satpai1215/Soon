@@ -1,7 +1,7 @@
 <%= form_for(@countdown_page, url: @url, method: @method)  do |f| %>
   <% if @countdown_page.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@countdown_page.errors.count, "error") %> detected:</h2>
+      <h2>Oops! There was a problem:</h2>
 
       <ul>
       <% @countdown_page.errors.full_messages.each do |msg| %>
