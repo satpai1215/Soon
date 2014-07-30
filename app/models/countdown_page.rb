@@ -1,5 +1,5 @@
 class CountdownPage < ActiveRecord::Base
-  	attr_accessible :end_date, :owner, :url_token, :notes, :timepicker, :datepicker, :name, :users_attributes, :finish_job_id
+  	attr_accessible :end_date, :owner, :url_token, :notes, :timepicker, :datepicker, :name, :users_attributes, :finish_job_id, :timezone
   	attr_accessor :timepicker, :datepicker
 
   	has_many :users, dependent: :destroy
