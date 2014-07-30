@@ -1,4 +1,6 @@
-sooon.herokuapp.com  (testing site)
-
+seeyousoon.herokuapp.com  (testing site)
 
 in collaboration with Tria Chang
+
+* create personalized countdown timers for the next time you will see each other
+* creates unique links for countdowns so you can bookmark them for easy access
